@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Machine learning models
+*.pkl
+
+# Flask
+instance/
+
+# Streamlit config
+.streamlit/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/

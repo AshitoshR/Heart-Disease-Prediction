@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Heart Disease Predcition</title>
+        <link rel="stylesheet" href="{{ url_for("static", filename="style.css")}}">
+    </head>
+    <body>
+        <!-- HERO SECTION -->
+         <section class="hero">
+            <h1>Heart Disease Prediction System</h1>
+            <p>
+                Early detection saves lives.
+                Predict the rsk of heart disease using machine learning.
+            </p>
+         </section>
+
+        <! -- INFO CARDS -->
+        <section class="info">
+            <div class="card">
+                <h3>Why Heart Health Matters</h3>
+                <p>
+                    Heart disease is one of the leading causes of death worldwide.
+                    Maintaining a healthy heart improves longevity and quality of life.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Risks of Poor Heart HEalth</h3>
+                <ul>
+                    <li>Heart attack & stroke</li>
+                    <li>Reduced ife expectancy</li>
+                    <li>Long-term medication</li>
+                    <li>High healthcare costs</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Healthy Heart Tips</h3>
+                <ul>
+                    <li>Regular exercise</li>
+                    <li>Balanced diet</li>
+                    <li>Quit smoking</li>
+                    <li>Stress management</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- IMAGE SECTION -->
+        <section class="gallary">
+            <img src="{{ url_for("static", filename="images/heart.jpg")}}">
+            <img src="{{ url_for("static", filename="images/heart.jpg")}}">
+            <img src="{{ url_for("static", filename="images/heart.jpg")}}">
+        </section>
+
+        <!--- FORM SECTION -->
+        <section class="form-section">
+            <h2>Patient Details</h2>
+            <form method="POST">
+                <div class="grid">
+                    <input name="age" placeholder="Age" required>
+                    <input name="sex" placeholder="Sex (0=F,1=M)" required>
+                    <input name="cp" placeholder="Chest Pain Type" required>
+                    <input name="bp" placeholder="Blood Pressure" required>
+                    <input name="chol" placeholder="Cholesterol" required>
+                    <input name="fbs" placeholder="FBS > 120 (0/1)" required>
+                    <input name="ekg" placeholder="EKG Results" required>
+                    <input name="max_hr" placeholder="Max Heart Rate" required>
+                    <input name="ex_angina" placeholder="Exercise Angina (0/1)" required>
+                    <input name="st_dep" placeholder="ST Depression" required>
+                    <input name="slope" placeholder="Slope of ST" required>
+                    <input name="vessels" placeholder="Vessels (0-3)" required>
+                    <input name="thallium" placeholder="Thallium (3/6/7)" required>
+                </div>
+                <button type="submot">Predict</button>
+            </form>
+
+            {% if prediction is not none %}
+                {% if prediction == 1 %}
+                    <div class="result danger">
+                        High Risk of Heart Disease
+                        <br>Probability: {{ (probability*100)|round(2)}}%
+                    </div>
+                {% else %}
+                    <div class="result sucess">
+                        Low Risk of Heart Disease
+                        <br>Probability: {{ (probability*100)|round(2)}}%
+                    </div>
+                {% endif %}
+            {% endif %}
+        </section>
+
+        <footer>
+            <p>Machine Learning Powered | Heart Health Awareness</p>
+        </footer>
+    </body>
+</html>
